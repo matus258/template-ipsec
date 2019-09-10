@@ -89,7 +89,6 @@ for line in ipsec.split('\n'):
           json_output['security'][parsed_line[0]] = 'ESTABLISHED'
         elif 'CONNECTING' in parsed_line:
           json_output['security'][parsed_line[0]] = 'CONNECTING'
-          print(json_output['security'][parsed_line[0]])
       else:
         json_output['security']['status'] = {}
         json_output['security']['status']['up'] = parsed_line[2].replace('(','')
@@ -98,19 +97,19 @@ for line in ipsec.split('\n'):
     row += 1
 
 
-# if (len(sys.argv) > 4):
-#   print(json_output.get(sys.argv[1], {}).get(sys.argv[2], {}).get(sys.argv[3], {}).get(sys.argv[4], default))
-# elif (len(sys.argv) > 3):
-#   print(json_output.get(sys.argv[1], {}).get(sys.argv[2], {}).get(sys.argv[3], default))
-# elif (len(sys.argv) > 2):
-#   print(json_output.get(sys.argv[1], {}).get(sys.argv[2], default))
-# elif (len(sys.argv) > 1):
-#   if sys.argv[1] == 'discovery':
-#     discovery = {'data':[]}
-#     for conn in json_output['connections'].keys():
-#       discovery['data'].append({'{#CONN}': conn})
-#     print(json.dumps(discovery))
-#   elif sys.argv[1] == 'json':
-#     print(json.dumps(json_output))
-# else:
-#   print(text_output)
+if (len(sys.argv) > 4):
+  print(json_output.get(sys.argv[1], {}).get(sys.argv[2], {}).get(sys.argv[3], {}).get(sys.argv[4], default))
+elif (len(sys.argv) > 3):
+  print(json_output.get(sys.argv[1], {}).get(sys.argv[2], {}).get(sys.argv[3], default))
+elif (len(sys.argv) > 2):
+  print(json_output.get(sys.argv[1], {}).get(sys.argv[2], default))
+elif (len(sys.argv) > 1):
+  if sys.argv[1] == 'discovery':
+    discovery = {'data':[]}
+    for conn in json_output['connections'].keys():
+      discovery['data'].append({'{#CONN}': conn})
+    print(json.dumps(discovery))
+  elif sys.argv[1] == 'json':
+    print(json.dumps(json_output))
+else:
+  print(text_output)
