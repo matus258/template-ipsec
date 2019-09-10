@@ -14,8 +14,7 @@ row = 0
 default = 'NONE'
 
 for line in ipsec.split('\n'):
-  parsed_line = re.split(r'\s+', re.sub(r'(:|=|,|{.*}|\[\d+\])', '', line))
-  print(parsed_line)    
+  parsed_line = re.split(r'\s+', re.sub(r'(:|=|,|{.*}|\[\d+\])', '', line))  
   while('' in parsed_line):
     parsed_line.remove("")
 
@@ -86,6 +85,7 @@ for line in ipsec.split('\n'):
 
     elif page == 'Security':
       if row > 0:
+        print(parsed_line)
         if 'ESTABLISHED' in parsed_line:
           json_output['security'][parsed_line[0]] = 'ESTABLISHED'
         elif 'INSTALLED' in parsed_line:
