@@ -85,11 +85,11 @@ for line in ipsec.split('\n'):
 
     elif page == 'Security':
       if row > 0:
-        print(parsed_line)
         if 'ESTABLISHED' in parsed_line:
           json_output['security'][parsed_line[0]] = 'ESTABLISHED'
         elif 'CONNECTING' in parsed_line:
           json_output['security'][parsed_line[0]] = 'CONNECTING'
+          print(json_output['security'][parsed_line[0]])
       else:
         json_output['security']['status'] = {}
         json_output['security']['status']['up'] = parsed_line[2].replace('(','')
