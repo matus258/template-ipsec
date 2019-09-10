@@ -88,8 +88,8 @@ for line in ipsec.split('\n'):
         print(parsed_line)
         if 'ESTABLISHED' in parsed_line:
           json_output['security'][parsed_line[0]] = 'ESTABLISHED'
-        elif 'INSTALLED' in parsed_line:
-          json_output['security'][parsed_line[0]] = 'INSTALLED'
+        elif 'CONNECTING' in parsed_line:
+          json_output['security'][parsed_line[0]] = 'CONNECTING'
       else:
         json_output['security']['status'] = {}
         json_output['security']['status']['up'] = parsed_line[2].replace('(','')
